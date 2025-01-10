@@ -57,22 +57,24 @@ public class CalculatorTest {
     }
 
     @Test
-    public void PowerTwoNumbers_NaNBase() {
+    public void PowerTwoNumbers_NaNBase_Test() {
         assertEquals(Double.NaN, calculator.powerTwoNumbers(Double.NaN, 2), DELTA);
     }
 
     @Test
-    public void PowerTwoNumbers_NaNExponent() {
+    public void PowerTwoNumbers_NaNExponent_Test() {
         assertEquals(Double.NaN, calculator.powerTwoNumbers(2, Double.NaN), DELTA);
     }
 
     @Test
-    public void PowerTwoNumbers_Overflow() {
+    public void PowerTwoNumbers_Overflow_Test() {
         assertEquals(Double.POSITIVE_INFINITY, calculator.powerTwoNumbers(10, 1000), DELTA);
     }
 
     @Test
-    public void PowerTwoNumbers_Underflow() {
+    public void PowerTwoNumbers_Underflow_Test() {
         assertEquals(0, calculator.powerTwoNumbers(10, -1000), DELTA);
     }
+
+    @Test Sqrt_PositiveInput_Test
 }
