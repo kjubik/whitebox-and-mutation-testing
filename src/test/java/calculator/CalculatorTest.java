@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class CalculatorTest {
 
     private static Calculator calculator;
-    public static final double DELTA = 0.00000000001;
+    public static final double DELTA = 0.000_000_000_01;
 
     @BeforeClass
     public static void init() {
@@ -79,5 +79,15 @@ public class CalculatorTest {
     @Test
     public void Sqrt_PositiveInput_Test() {
         assertEquals(1.41421356237, calculator.sqrt(2), DELTA);
+    }
+
+    @Test
+    public void Sqrt_NegativeInput_Test() {
+        assertEquals(Double.NaN, calculator.sqrt(-2), DELTA);
+    }
+
+    @Test
+    public void Sqrt_Fraction_Test() {
+        assertEquals(0.1, calculator.sqrt(0.01), DELTA);
     }
 }
