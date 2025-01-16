@@ -175,4 +175,149 @@ public class CalculatorTest {
     public void CalculateTriangleCirc_IncorrectSumOfSides_Test() {
         assertEquals(Double.NaN, calculator.CalculateTriangleCirc(1, 2, 3), 0);
     }
+
+    @Test
+    public void ConvertCelsiusToFahrenheit_ZeroDegrees_Test() {
+        assertEquals(32, calculator.convertCelsiusToFarenheit(0), 0);
+    }
+
+    @Test
+    public void ConvertCelsiusToFahrenheit_PositiveDegrees_Test() {
+        assertEquals(78.8, calculator.convertCelsiusToFarenheit(26), DELTA);
+    }
+
+    @Test
+    public void ConvertCelsiusToFahrenheit_NegativeDegrees_Test() {
+        assertEquals(-78.8, calculator.convertCelsiusToFarenheit(-26), DELTA);
+    }
+
+    @Test
+    public void ConvertCelsiusToFahrenheit_BelowColdestPossible_Test() {
+        assertEquals(Double.NaN, calculator.convertCelsiusToFarenheit(-274), 0);
+    }
+
+    @Test
+    public void ConvertFahrenheitToCelsius_PositiveDegrees_Test() {
+        assertEquals((double) 170 /9, calculator.convertFarenheitToCelsius(66), DELTA);
+    }
+
+    @Test
+    public void ConvertFahrenheitToCelsius_ZeroDegrees_Test() {
+        assertEquals((double) -160 /9, calculator.convertFarenheitToCelsius(0), DELTA);
+    }
+
+    @Test
+    public void ConvertFahrenheitToCelsius_NegativeDegrees_Test() {
+        assertEquals((double) -230 /9, calculator.convertFarenheitToCelsius(-14), DELTA);
+    }
+
+    @Test
+    public void ConvertFromMphToKph_PositiveSpeed_Test() {
+        assertEquals(161, calculator.convertFromMphToKph(100), DELTA);
+    }
+
+    @Test
+    public void ConvertFromMphToKph_ZeroSpeed_Test() {
+        assertEquals(0, calculator.convertFromMphToKph(0), 0);
+    }
+
+    @Test
+    public void ConvertFromMphToKph_NegativeSpeed_Test() {
+        assertEquals(Double.NaN, calculator.convertFromMphToKph(-100), 0);
+    }
+
+    @Test
+    public void Factorial_PositiveNumber_Test() {
+        assertEquals(120, calculator.factorial(5));
+    }
+
+    @Test
+    public void Factorial_NegativeNumber_Test() {
+        assertEquals(1, calculator.factorial(-1));
+    }
+
+    @Test
+    public void Fibonacci_PositiveNumber_Test() {
+        assertEquals(4, calculator.fibbonacci(4));
+    }
+
+    @Test
+    public void Fibonacci_NegativeNumber_Test() {
+        assertEquals(0 , calculator.fibbonacci(-1));
+    }
+
+    @Test
+    public void FindGCD_DoublePositiveValues_Test() {
+        assertEquals(3, calculator.findGCD(21, 12));
+    }
+
+    @Test
+    public void FindGCD_SingleZero_Test() {
+        assertEquals(0, calculator.findGCD(3, 0));
+    }
+
+    @Test
+    public void FindGCD_DoubleZero_Test() {
+        assertEquals(0, calculator.findGCD(0, 0));
+    }
+
+    @Test
+    public void FindGCD_PositiveAndNegativeValues_Test() {
+        assertEquals(5, calculator.findGCD(-10, 75));
+    }
+
+    @Test
+    public void FindGCD_DoubleNegativeValues_Test() {
+        assertEquals(-17, calculator.findGCD(-34, -187));
+    }
+
+    @Test
+    public void FindLCM_DoublePositiveValues_Test() {
+        assertEquals(39, calculator.findLCM(3, 13));
+    }
+
+    @Test
+    public void FindLCM_SingleZero_Test() {
+        assertEquals(0, calculator.findLCM(0, 1));
+    }
+
+    @Test
+    public void FindLCM_DoubleZero_Test() {
+        assertEquals(0, calculator.findLCM(0, 0));
+    }
+
+    @Test
+    public void FindLCM_PositiveAndNegativeValues_Test() {
+        assertEquals(0, calculator.findLCM(-2, 3));
+    }
+
+    @Test
+    public void FindLCM_DoubleNegativeValues_Test() {
+        assertEquals(0, calculator.findLCM(-2, -3));
+    }
+
+    @Test
+    public void isPrime_ValidPrimeNumber_Test() {
+        assertTrue(calculator.isPrime(7));
+    }
+
+    @Test
+    public void isPrime_CompositeNumber_Test() {
+        assertFalse(calculator.isPrime(8));
+    }
+
+    @Test
+    public void isPrime_Zero_Test() {
+        assertFalse(calculator.isPrime(0));
+    }
+
+    @Test
+    public void isPrime_One_Test() {
+        assertFalse(calculator.isPrime(1));
+    }
+
+    @Test
+    public void isPrime_NegativeValue_Test() {
+        assertFalse(calculator.isPrime(-1));
+    }
 }
