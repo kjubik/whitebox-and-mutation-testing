@@ -247,7 +247,7 @@ public class CalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void ConvertFromMphToKph_NegativeSpeed_Test() {
-        assertEquals(Double.NaN, calculator.convertFromMphToKph(-100), 0);
+        calculator.convertFromMphToKph(-100);
     }
 
     @Test
@@ -265,9 +265,9 @@ public class CalculatorTest {
         assertEquals(1, calculator.factorial(0));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void Factorial_NegativeNumber_Test() {
-        assertEquals(1, calculator.factorial(-1));
+        calculator.factorial(-1);
     }
 
     @Test
@@ -285,9 +285,9 @@ public class CalculatorTest {
         assertEquals(0 , calculator.fibbonacci(0));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void Fibonacci_NegativeNumber_Test() {
-        assertEquals(0 , calculator.fibbonacci(-1));
+        calculator.fibbonacci(-1);
     }
 
     @Test
