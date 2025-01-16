@@ -148,6 +148,11 @@ public class CalculatorTest {
         calculator.CalculateSquareCirc(-1);
     }
 
+    @Test // original test method
+    public void CalculateRectCircTest() {
+        assertEquals(8, calculator.CalculateRectCirc(2,2));
+    }
+
     @Test
     public void CalculateRectCirc_ValidSideLengths_Test() {
         assertEquals(18, calculator.CalculateRectCirc(3, 6), 0);
