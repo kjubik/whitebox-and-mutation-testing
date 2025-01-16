@@ -307,7 +307,7 @@ public class CalculatorTest {
 
     @Test
     public void FindLCM_DoubleNegativeValues_Test() {
-        assertEquals(0, calculator.findLCM(-2, -3));
+        assertEquals(6, calculator.findLCM(-2, -3));
     }
 
     @Test
