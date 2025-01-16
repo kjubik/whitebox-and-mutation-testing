@@ -97,70 +97,72 @@ public class CalculatorTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateSquareArea_Zero_Test() {
+    public void CalculateSquareArea_ZeroSideLength_Test() {
         calculator.CalculateSquareArea(0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateSquareArea_NegativeNumber_Test() {
+    public void CalculateSquareArea_NegativeSideLength_Test() {
         calculator.CalculateSquareArea(-1);
     }
 
     @Test
-    public void CalculateRectArea_WholePositiveNumber_Test() {
+    public void CalculateRectArea_ValidSideLengths_Test() {
         assertEquals(20, calculator.CalculateRectArea(4, 5), 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateRectArea_SingleZeroValue_Test() {
+    public void CalculateRectArea_ZeroSideLength_Test() {
         calculator.CalculateRectArea(0, 100);
         calculator.CalculateRectArea(100, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateRectArea_DoubleZeroValue_Test() {
+    public void CalculateRectArea_ZeroSideLengths_Test() {
         calculator.CalculateRectArea(0, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateRectArea_SingleNegativeNumber_Test() {
+    public void CalculateRectArea_NegativeSideLength_Test() {
         calculator.CalculateRectArea(-1, 1);
         calculator.CalculateRectArea(1, -1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateRectArea_DoubleNegativeNumber_Test() {
+    public void CalculateRectArea_NegativeSideLengths_Test() {
         calculator.CalculateRectArea(-1, -1);
     }
 
     @Test
-    public void CalculateSquareCirc_PositiveNumber_Test() {
+    public void CalculateSquareCirc_ValidSideLength_Test() {
         assertEquals(12, calculator.CalculateSquareCirc(3), 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateSquareCirc_Zero_Test() {
+    public void CalculateSquareCirc_ZeroSideLength_Test() {
         calculator.CalculateSquareCirc(0);
     }
 
-    @Test
-    public void CalculateSquareCirc_NegativeNumber_Test() {
-        assertEquals(Double.NaN, calculator.CalculateSquareCirc(-1), 0);
+    @Test(expected = IllegalArgumentException.class)
+    public void CalculateSquareCirc_NegativeSideLength_Test() {
+        calculator.CalculateSquareCirc(-1);
     }
 
     @Test
-    public void CalculateRectCirc_PositiveNumber_Test() {
+    public void CalculateRectCirc_ValidSideLengths_Test() {
         assertEquals(18, calculator.CalculateRectCirc(3, 6), 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateRectCirc_Zero_Test() {
+    public void CalculateRectCirc_ZeroSideLength_Test() {
         calculator.CalculateRectCirc(0, 1);
+        calculator.CalculateRectCirc(1, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateRectCirc_NegativeNumber_Test() {
+    public void CalculateRectCirc_NegativeSideLength_Test() {
         calculator.CalculateRectCirc(-1, 1);
+        calculator.CalculateRectCirc(1, -1);
     }
 
     @Test
@@ -174,7 +176,7 @@ public class CalculatorTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void CalculateTriangleArea_ZeroLengthSide_Test() {
+    public void CalculateTriangleArea_ZeroSideLength_Test() {
         calculator.CalculateTriangleArea(0, 5);
     }
 
@@ -189,13 +191,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void ConvertCelsiusToFahrenheit_ZeroDegrees_Test() {
-        assertEquals(32, calculator.convertCelsiusToFarenheit(0), 0);
+    public void ConvertCelsiusToFahrenheit_PositiveDegrees_Test() {
+        assertEquals(78.8, calculator.convertCelsiusToFarenheit(26), DELTA);
     }
 
     @Test
-    public void ConvertCelsiusToFahrenheit_PositiveDegrees_Test() {
-        assertEquals(78.8, calculator.convertCelsiusToFarenheit(26), DELTA);
+    public void ConvertCelsiusToFahrenheit_ZeroDegrees_Test() {
+        assertEquals(32, calculator.convertCelsiusToFarenheit(0), 0);
     }
 
     @Test
@@ -223,6 +225,11 @@ public class CalculatorTest {
         assertEquals((double) -230 /9, calculator.convertFarenheitToCelsius(-14), DELTA);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void ConvertFahrenheitToCelsius_BelowColdestPossible_Test() {
+        calculator.convertFarenheitToCelsius(-460);
+    }
+
     @Test
     public void ConvertFromMphToKph_PositiveSpeed_Test() {
         assertEquals(161, calculator.convertFromMphToKph(100), DELTA);
@@ -233,7 +240,7 @@ public class CalculatorTest {
         assertEquals(0, calculator.convertFromMphToKph(0), 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void ConvertFromMphToKph_NegativeSpeed_Test() {
         assertEquals(Double.NaN, calculator.convertFromMphToKph(-100), 0);
     }
@@ -244,13 +251,33 @@ public class CalculatorTest {
     }
 
     @Test
+    public void Factorial_OfOne_Test() {
+        assertEquals(1, calculator.factorial(1));
+    }
+
+    @Test
+    public void Factorial_OfZero_Test() {
+        assertEquals(1, calculator.factorial(0));
+    }
+
+    @Test
     public void Factorial_NegativeNumber_Test() {
         assertEquals(1, calculator.factorial(-1));
     }
 
     @Test
     public void Fibonacci_PositiveNumber_Test() {
-        assertEquals(4, calculator.fibbonacci(4));
+        assertEquals(3, calculator.fibbonacci(4));
+    }
+
+    @Test
+    public void Fibonacci_OfOne_Test() {
+        assertEquals(0 , calculator.fibbonacci(0));
+    }
+
+    @Test
+    public void Fibonacci_OfZero_Test() {
+        assertEquals(0 , calculator.fibbonacci(0));
     }
 
     @Test
@@ -259,13 +286,14 @@ public class CalculatorTest {
     }
 
     @Test
-    public void FindGCD_DoublePositiveValues_Test() {
+    public void FindGCD_TwoPositiveValues_Test() {
         assertEquals(3, calculator.findGCD(21, 12));
     }
 
     @Test
     public void FindGCD_SingleZero_Test() {
-        assertEquals(0, calculator.findGCD(3, 0));
+        assertEquals(3, calculator.findGCD(3, 0));
+        assertEquals(3, calculator.findGCD(0, 3));
     }
 
     @Test
@@ -276,6 +304,7 @@ public class CalculatorTest {
     @Test
     public void FindGCD_PositiveAndNegativeValues_Test() {
         assertEquals(5, calculator.findGCD(-10, 75));
+        assertEquals(5, calculator.findGCD(75, -10));
     }
 
     @Test
@@ -288,19 +317,19 @@ public class CalculatorTest {
         assertEquals(39, calculator.findLCM(3, 13));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void FindLCM_SingleZero_Test() {
-        assertEquals(0, calculator.findLCM(0, 1));
-        assertEquals(0, calculator.findLCM(1, 0));
+        calculator.findLCM(0, 1);
+        calculator.findLCM(1, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void FindLCM_TwoZeros_Test() {
+        calculator.findLCM(0, 0);
     }
 
     @Test
-    public void FindLCM_DoubleZero_Test() {
-        assertEquals(0, calculator.findLCM(0, 0));
-    }
-
-    @Test
-    public void FindLCM_PositiveAndNegativeValues_Test() {
+    public void FindLCM_SingleNegativeValue_Test() {
         assertEquals(6, calculator.findLCM(-2, 3));
         assertEquals(6, calculator.findLCM(2, -3));
     }
@@ -311,7 +340,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isPrime_ValidPrimeNumber_Test() {
+    public void isPrime_PrimeNumber_Test() {
         assertTrue(calculator.isPrime(7));
     }
 
@@ -321,13 +350,13 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isPrime_Zero_Test() {
-        assertFalse(calculator.isPrime(0));
+    public void isPrime_One_Test() {
+        assertFalse(calculator.isPrime(1));
     }
 
     @Test
-    public void isPrime_One_Test() {
-        assertFalse(calculator.isPrime(1));
+    public void isPrime_Zero_Test() {
+        assertFalse(calculator.isPrime(0));
     }
 
     @Test
