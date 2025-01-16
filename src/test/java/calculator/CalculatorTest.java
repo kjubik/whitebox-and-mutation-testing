@@ -291,6 +291,7 @@ public class CalculatorTest {
     @Test
     public void FindLCM_SingleZero_Test() {
         assertEquals(0, calculator.findLCM(0, 1));
+        assertEquals(0, calculator.findLCM(1, 0));
     }
 
     @Test
@@ -300,7 +301,8 @@ public class CalculatorTest {
 
     @Test
     public void FindLCM_PositiveAndNegativeValues_Test() {
-        assertEquals(0, calculator.findLCM(-2, 3));
+        assertEquals(6, calculator.findLCM(-2, 3));
+        assertEquals(6, calculator.findLCM(2, -3));
     }
 
     @Test
