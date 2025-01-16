@@ -96,14 +96,14 @@ public class CalculatorTest {
         assertEquals(16, calculator.CalculateSquareArea(4), 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateSquareArea_Zero_Test() {
-        assertEquals(Double.NaN, calculator.CalculateSquareArea(0), 0);
+        calculator.CalculateSquareArea(0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateSquareArea_NegativeNumber_Test() {
-        assertEquals(Double.NaN, calculator.CalculateSquareArea(-1), 0);
+        calculator.CalculateSquareArea(-1);
     }
 
     @Test
@@ -111,14 +111,26 @@ public class CalculatorTest {
         assertEquals(20, calculator.CalculateRectArea(4, 5), 0);
     }
 
-    @Test
-    public void CalculateRectArea_Zero_Test() {
-        assertEquals(Double.NaN, calculator.CalculateRectArea(0, 100), 0);
+    @Test(expected = IllegalArgumentException.class)
+    public void CalculateRectArea_SingleZeroValue_Test() {
+        calculator.CalculateRectArea(0, 100);
+        calculator.CalculateRectArea(100, 0);
     }
 
-    @Test
-    public void CalculateRectArea_NegativeNumber_Test() {
-        assertEquals(Double.NaN, calculator.CalculateRectArea(-1, 1), 0);
+    @Test(expected = IllegalArgumentException.class)
+    public void CalculateRectArea_DoubleZeroValue_Test() {
+        calculator.CalculateRectArea(0, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void CalculateRectArea_SingleNegativeNumber_Test() {
+        calculator.CalculateRectArea(-1, 1);
+        calculator.CalculateRectArea(1, -1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void CalculateRectArea_DoubleNegativeNumber_Test() {
+        calculator.CalculateRectArea(-1, -1);
     }
 
     @Test
@@ -126,9 +138,9 @@ public class CalculatorTest {
         assertEquals(12, calculator.CalculateSquareCirc(3), 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateSquareCirc_Zero_Test() {
-        assertEquals(Double.NaN, calculator.CalculateSquareCirc(0), 0);
+        calculator.CalculateSquareCirc(0);
     }
 
     @Test
@@ -141,14 +153,14 @@ public class CalculatorTest {
         assertEquals(18, calculator.CalculateRectCirc(3, 6), 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateRectCirc_Zero_Test() {
-        assertEquals(Double.NaN, calculator.CalculateRectCirc(0, 1), 0);
+        calculator.CalculateRectCirc(0, 1);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateRectCirc_NegativeNumber_Test() {
-        assertEquals(Double.NaN, calculator.CalculateRectCirc(-1, 1), 0);
+        calculator.CalculateRectCirc(-1, 1);
     }
 
     @Test
@@ -156,14 +168,14 @@ public class CalculatorTest {
         assertEquals(10, calculator.CalculateTriangleArea(4, 5), 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateTriangleArea_ZeroHeight_Test() {
-        assertEquals(Double.NaN, calculator.CalculateTriangleArea(4, 0), 0);
+        calculator.CalculateTriangleArea(4, 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateTriangleArea_ZeroLengthSide_Test() {
-        assertEquals(Double.NaN, calculator.CalculateTriangleArea(0, 5), 0);
+        calculator.CalculateTriangleArea(0, 5);
     }
 
     @Test
@@ -171,9 +183,9 @@ public class CalculatorTest {
         assertEquals(9, calculator.CalculateTriangleCirc(2, 3, 4), 0);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void CalculateTriangleCirc_IncorrectSumOfSides_Test() {
-        assertEquals(Double.NaN, calculator.CalculateTriangleCirc(1, 2, 3), 0);
+        calculator.CalculateTriangleCirc(1, 2, 3);
     }
 
     @Test
@@ -191,9 +203,9 @@ public class CalculatorTest {
         assertEquals(-78.8, calculator.convertCelsiusToFarenheit(-26), DELTA);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void ConvertCelsiusToFahrenheit_BelowColdestPossible_Test() {
-        assertEquals(Double.NaN, calculator.convertCelsiusToFarenheit(-274), 0);
+        calculator.convertCelsiusToFarenheit(-274);
     }
 
     @Test
