@@ -83,11 +83,96 @@ public class CalculatorTest {
 
     @Test
     public void Sqrt_NegativeInput_Test() {
-        assertEquals(Double.NaN, calculator.sqrt(-2), DELTA);
+        assertEquals(Double.NaN, calculator.sqrt(-2), 0);
     }
 
     @Test
     public void Sqrt_Fraction_Test() {
-        assertEquals(0.1, calculator.sqrt(0.01), DELTA);
+        assertEquals(0.5, calculator.sqrt(0.25), DELTA);
+    }
+
+    @Test
+    public void CalculateSquareArea_WholePositiveNumber_Test() {
+        assertEquals(16, calculator.CalculateSquareArea(4), 0);
+    }
+
+    @Test
+    public void CalculateSquareArea_Zero_Test() {
+        assertEquals(Double.NaN, calculator.CalculateSquareArea(0), 0);
+    }
+
+    @Test
+    public void CalculateSquareArea_NegativeNumber_Test() {
+        assertEquals(Double.NaN, calculator.CalculateSquareArea(-1), 0);
+    }
+
+    @Test
+    public void CalculateRectArea_WholePositiveNumber_Test() {
+        assertEquals(20, calculator.CalculateRectArea(4, 5), 0);
+    }
+
+    @Test
+    public void CalculateRectArea_Zero_Test() {
+        assertEquals(Double.NaN, calculator.CalculateRectArea(0, 100), 0);
+    }
+
+    @Test
+    public void CalculateRectArea_NegativeNumber_Test() {
+        assertEquals(Double.NaN, calculator.CalculateRectArea(-1, 1), 0);
+    }
+
+    @Test
+    public void CalculateSquareCirc_PositiveNumber_Test() {
+        assertEquals(12, calculator.CalculateSquareCirc(3), 0);
+    }
+
+    @Test
+    public void CalculateSquareCirc_Zero_Test() {
+        assertEquals(Double.NaN, calculator.CalculateSquareCirc(0), 0);
+    }
+
+    @Test
+    public void CalculateSquareCirc_NegativeNumber_Test() {
+        assertEquals(Double.NaN, calculator.CalculateSquareCirc(-1), 0);
+    }
+
+    @Test
+    public void CalculateRectCirc_PositiveNumber_Test() {
+        assertEquals(18, calculator.CalculateRectCirc(3, 6), 0);
+    }
+
+    @Test
+    public void CalculateRectCirc_Zero_Test() {
+        assertEquals(Double.NaN, calculator.CalculateRectCirc(0, 1), 0);
+    }
+
+    @Test
+    public void CalculateRectCirc_NegativeNumber_Test() {
+        assertEquals(Double.NaN, calculator.CalculateRectCirc(-1, 1), 0);
+    }
+
+    @Test
+    public void CalculateTriangleArea_ValidTriangle_Test() {
+        assertEquals(10, calculator.CalculateTriangleArea(4, 5), 0);
+    }
+
+    @Test
+    public void CalculateTriangleArea_ZeroHeight_Test() {
+        assertEquals(Double.NaN, calculator.CalculateTriangleArea(4, 0), 0);
+    }
+
+    @Test
+    public void CalculateTriangleArea_ZeroLengthSide_Test() {
+        assertEquals(Double.NaN, calculator.CalculateTriangleArea(0, 5), 0);
+    }
+
+    @Test
+    public void CalculateTriangleCirc_ValidTriangle_Test() {
+        assertEquals(9, calculator.CalculateTriangleCirc(2, 3, 4), 0);
+    }
+
+    @Test
+    public void CalculateTriangleCirc_IncorrectSumOfSides_Test() {
+        assertEquals(Double.NaN, calculator.CalculateTriangleCirc(1, 2, 3), 0);
     }
 }
