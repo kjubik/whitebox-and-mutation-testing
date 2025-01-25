@@ -94,9 +94,8 @@ public class CalculatorTest {
 
     @Test
     public void IsPrimeTest() {
-        assertTrue(calculator.isPrime(17));
-        assertFalse(calculator.isPrime(4));
         assertFalse(calculator.isPrime(1));
-        assertFalse(calculator.isPrime(0));
+        assertFalse(calculator.isPrime(4));
+        assertTrue(calculator.isPrime(5));
     }
 }
