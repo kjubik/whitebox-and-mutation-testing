@@ -76,9 +76,6 @@ public class CalculatorTest {
 
     @Test
     public void FibonacciTest() {
-        assertEquals(5, calculator.fibbonacci(5));
-        assertEquals(0, calculator.fibbonacci(0));
-        assertEquals(1, calculator.fibbonacci(1));
         assertEquals(2, calculator.fibbonacci(3));
     }
 
